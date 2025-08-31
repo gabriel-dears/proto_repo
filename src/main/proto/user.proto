@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.hospital_app.proto.generated.user";
+option java_outer_classname = "UserProto";
+
+service UserService {
+  rpc DoctorExists (UserExistsRequest) returns (UserExistsResponse);
+  rpc PatientExists (UserExistsRequest) returns (UserExistsResponse);
+  rpc GetUser (GetUserRequest) returns (GetUserResponse);
+}
+
+message GetUserRequest {
+  string userId = 1;
+}
+
+message GetUserResponse {
+  string id = 1;
+  string email = 2;
+  string name = 3;
+  string username = 4;
+  string role = 5;
+  bool enabled = 6;
+}
+
+message UserExistsRequest {
+  string userId = 1;
+}
+
+message UserExistsResponse {
+  bool exists = 1;
+}
